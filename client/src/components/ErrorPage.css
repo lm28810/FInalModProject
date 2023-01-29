@@ -1,14 +1,11 @@
-.container{
+h1,p{
+    text-align: center;
+}
+
+.error-page{
     display: flex;
     flex-direction: column;
-    
-}
-.error-info{
-    padding: 3em;
-}
-h1, p{
-    
-    text-align: center;
+    margin: 3em;
 }
 
 h1{
