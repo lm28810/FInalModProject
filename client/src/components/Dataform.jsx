@@ -1,8 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
 
 function Dataform() {
     const [date, setDate]= useState( new Date())
@@ -10,7 +12,7 @@ function Dataform() {
         avatar: "https://placekitten.com/g/200/200",
         productname: "Your Product Name",
         inventory: 0,
-        nextDelivery: new Date(),
+        nextDelivery: date,
         deliveryAmt: 0,
         price: 0,
         description: "Some notes",
@@ -32,20 +34,23 @@ function Dataform() {
         e.preventDefault();
 
     
+        const newPerson = { ...form };
 
-    const newPerson = { ...form };
+
+        axios.post('http://localhost:4000/items/add', newPerson)
+      .then(res => console.log(res.body));
  
-   await fetch("http://localhost:4000/items/add", {
-     method: "POST",
-     headers: {
-       "Content-Type": "application/json",
-     },
-     body: JSON.stringify(newPerson),
-   })
-   .catch(error => {
-     window.alert(error);
-     return;
-   });
+//    await fetch("http://localhost:4000/items/add",  {
+//      method: "POST",
+//      headers: {
+//        "Content-Type": "application/json",
+//      },
+//      body: JSON.stringify(newPerson),
+//    })
+//    .catch(error => {
+//      window.alert(error);
+//      return;
+//   });
  
    setForm({ 
         avatar: "https://placekitten.com/g/200/200",
@@ -61,16 +66,19 @@ function Dataform() {
  }
 
 
+
    
   
   return (
-      <div>
+      <div className='form-container'> 
           {/* onchange handler needed */}
-          <h2>Add New Products Here!</h2>
-          <form onSubmit={onSubmit}>
+          
+          <form className='form' onSubmit={onSubmit}>
+              <h2 className='form-header'>Add New Products Here!</h2>
        <div className="form-group">
          <label htmlFor="avatar">Image Url</label>
-         <input
+                  <input
+                      required
            type="text"
            className="form-control"
            id="avatar"
@@ -81,7 +89,8 @@ function Dataform() {
               
        <div className="form-group">
          <label htmlFor="productname">Product Name</label>
-         <input
+                  <input
+                      required
            type="text"
            className="form-control"
            id="productname"
@@ -100,37 +109,46 @@ function Dataform() {
          />
               </div>
                  <div className="form-group">
-         <label htmlFor="inventory">Delivery Date</label>
+         <label htmlFor="nextDelivery">Delivery Date</label>
          <DatePicker selected={date} onChange={date => setDate(date)} />
               </div>
                 <div className="form-group">
-         <label htmlFor="productname">Delivery Amount</label>
-         <input
+         <label htmlFor=" deliveryAmt">Delivery Amount</label>
+                  <input
+                      required
+                      step={.1}
            type="text"
            className="form-control"
-           id="productname"
-           value={form.productname}
-           onChange={(e) => updateForm({ productname: e.target.value })}
+           id=" deliveryAmt"
+           value={form. deliveryAmt}
+           onChange={(e) => updateForm({  deliveryAmt: e.target.value })}
          />
               </div>
                 <div className="form-group">
-         <label htmlFor="productname">Price</label>
-         <input
-           type="text"
+         <label htmlFor="price">Price</label>
+                  <input
+                      required
+                      type="text"
+                      step={.1}
            className="form-control"
-           id="productname"
-           value={form.productname}
-           onChange={(e) => updateForm({ productname: e.target.value })}
+         id="price"
+         
+                      
+           value={form.price}
+           onChange={(e) => updateForm({ price: e.target.value })}
          />
               </div>
                 <div className="form-group">
-         <label htmlFor="productname">Description</label>
-         <input
+         <label htmlFor="description">Description</label>
+                  <textarea
+                      className="description1"
+                      required
            type="text"
            className="form-control"
-           id="productname"
-           value={form.productname}
-           onChange={(e) => updateForm({ productname: e.target.value })}
+           id="description"
+           rows="4" cols="50"
+           value={form.description}
+           onChange={(e) => updateForm({ description: e.target.value })}
          />
               </div>
               <div className="form-group">

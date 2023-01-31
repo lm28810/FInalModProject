@@ -122,6 +122,73 @@ width: 90%;
 padding: 1em;
 }
 
+/* form  */
+
+.form-container{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+}
+
+.form{
+ 
+  margin: auto;
+  margin: 0;
+  padding: 1em;
+  width: 80%;
+}
+
+input{
+  margin: 1em 0.5em;
+  padding: .5em;
+}
+
+.form-header{
+  padding: 2em;
+  text-align: center;
+}
+
+textarea{
+  margin: .5em;
+  width: 50%;
+}
+
+@media screen and (max-width: 400px) {
+  .form-header {
+      padding: 1em;
+      text-align: center;
+    }
+  .form-container {
+    padding: 2em;
+
+  }
+    .form {
+      width: 100%;
+  
+    }
+                 textarea{
+          width: 100%;
+    
+        }
+}
+
+.btn{
+  background-color: orangered;
+  border: none; 
+   color: white;
+   font-size: 1rem;
+   font-weight: bolder;
+  outline: white 1px solid;
+padding: .75em;
+}
+/* Search */
+
+.search{
+  outline: 2px solid green;
+}
 body {
   margin: 0;
   padding: none;

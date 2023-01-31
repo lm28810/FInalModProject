@@ -3,7 +3,7 @@ import React from 'react'
 function Searchbar() {
   return (
     <div>
-          <h1 className='search-title'>Search Products</h1>
+          <h2 className='search-title'>Search Products</h2>
 <div>
       <input className='search' placeholder="Enter Post Title"/>
     </div>
