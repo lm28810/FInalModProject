@@ -5,9 +5,10 @@ import App from './App';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import ErrorPage from './components/ErrorPage';
 import Home from './components/Home';
-import Login from './components/Login'
+import Login from './components/Inventory'
 import Dataform from './components/Dataform';
 import Searchbar from './components/Searchbar';
+import Inventory,  {loader as rootLoader} from './components/Inventory';
 
 
 const router = createBrowserRouter([
@@ -15,10 +16,20 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
-    // loader: rootLoader,
+    
     // action: rootAction,
+    
     children: [
-      { index: true, element: <Dataform/> },
+      { index: true, element: <Home /> },
+      {
+        path: "/items/add",
+        element: <Dataform/>,
+      },
+      {
+        path: "/items",
+        element: <Inventory />,
+        loader: rootLoader,
+      },
       
     ],
   },

@@ -30,6 +30,7 @@ router.route('/add').post((req, res) => {
 });
 
 router.route('/:id').get((req, res) => {
+  console.log("line is being hit")
   Product.findById(req.params.id)
     .then(item => res.json(item))
     .catch(err => res.status(400).json('Error: ' + err));
