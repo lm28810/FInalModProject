@@ -1,8 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function Dataform() {
+    const [date, setDate]= useState( new Date())
     const [form, setForm] = useState({
         avatar: "https://placekitten.com/g/200/200",
         productname: "Your Product Name",
@@ -17,7 +20,7 @@ function Dataform() {
     const navigate = useNavigate()
 
     // This will handle the submission info
-    function theForm(value) {
+    function updateForm(value) {
         return setForm((prev) => {
      return { ...prev, ...value };
    });
@@ -76,6 +79,68 @@ function Dataform() {
     
               </div>
               
+       <div className="form-group">
+         <label htmlFor="productname">Product Name</label>
+         <input
+           type="text"
+           className="form-control"
+           id="productname"
+           value={form.productname}
+           onChange={(e) => updateForm({ productname: e.target.value })}
+         />
+              </div>
+                <div className="form-group">
+         <label htmlFor="inventory">Inventory</label>
+         <input
+           type="number"
+           className="form-control"
+           id="inventory"
+           value={form.inventory}
+           onChange={(e) => updateForm({ inventory: e.target.value })}
+         />
+              </div>
+                 <div className="form-group">
+         <label htmlFor="inventory">Delivery Date</label>
+         <DatePicker selected={date} onChange={date => setDate(date)} />
+              </div>
+                <div className="form-group">
+         <label htmlFor="productname">Delivery Amount</label>
+         <input
+           type="text"
+           className="form-control"
+           id="productname"
+           value={form.productname}
+           onChange={(e) => updateForm({ productname: e.target.value })}
+         />
+              </div>
+                <div className="form-group">
+         <label htmlFor="productname">Price</label>
+         <input
+           type="text"
+           className="form-control"
+           id="productname"
+           value={form.productname}
+           onChange={(e) => updateForm({ productname: e.target.value })}
+         />
+              </div>
+                <div className="form-group">
+         <label htmlFor="productname">Description</label>
+         <input
+           type="text"
+           className="form-control"
+           id="productname"
+           value={form.productname}
+           onChange={(e) => updateForm({ productname: e.target.value })}
+         />
+              </div>
+              <div className="form-group">
+         <input
+           type="submit"
+           value="Create product"
+           className="btn"
+         />
+       </div>
+     </form>
     </div>
   )
 }
