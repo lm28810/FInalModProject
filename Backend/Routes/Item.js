@@ -11,23 +11,21 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const name = req.body.name;
+  console.log("line is being hit")
+  console.log(req.body)
+    const avatar = req.body.avatar;
+    const productname = req.body.name;
     const inventory = req.body.inventory;
     const deliveryDate = Date.parse(req.body.deliveryDate);
     const deliveryPrice = req.body.deliveryPrice;
     const salesPrice = req.body.salesPrice;
+    const description = req.body.description;
 
 
-  const newProduct = new Product({
-      name,
-      inventory,
-      deliveryDate,
-      deliveryPrice,
-      salesPrice,
-  });
+  const newProduct = new Product(req.body);
 
   newProduct.save()
-  .then(() => res.json('Exercise added!'))
+  .then(() => res.json('Product added!'))
   .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -44,20 +42,9 @@ router.route('/:id').delete((req, res) => {
 });
 
 router.route('/update/:id').post((req, res) => {
-  Product.findById(req.params.id)
-    .then(item => {
-            Product.name = req.body.name;
-            Product.inventory = req.body.inventory;
-            Product.deliveryDate = Date.parse(eq.body.deliveryDate);
-            Product.deliveryPrice = req.body.deliveryPrice;
-            Product.salesPrice = req.body.salesPrice;
-
-
-      product.save()
-        .then(() => res.json('Exercise updated!'))
-        .catch(err => res.status(400).json('Error: ' + err));
-    })
-    .catch(err => res.status(400).json('Error: ' + err));
-});
+  Product.findByIdAndUpdate(req.params.id, req.body)
+    
+})
+    
 
 module.exports = router;
