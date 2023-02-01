@@ -5,7 +5,6 @@ import App from './App';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import ErrorPage from './components/ErrorPage';
 import Home from './components/Home';
-import Login from './components/Inventory'
 import Dataform from './components/Dataform';
 import Searchbar from './components/Searchbar';
 import Inventory,  {loader as rootLoader} from './components/Inventory';
@@ -28,7 +27,7 @@ const router = createBrowserRouter([
       {
         path: "/items",
         element: <Inventory />,
-        loader: rootLoader,
+        // loader: rootLoader,
       },
       
     ],
