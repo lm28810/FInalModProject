@@ -79,11 +79,28 @@ export default function Inventory() {
  // This following section will display the table with the records of individuals.
  return (
    <div>
-     <h3>Record List</h3>
+     <h2 className="form-header">Check Out Our Inventory</h2>
   
+     <ul>
+       {records.map(item => (
+         <>
+         
+           <li><img src={item.avatar} alt={item.productname} /></li>
+           <li><h3>{item.productname}</h3></li>
+           <div>
+             <li><p>Product Info</p></li>
 
-     <table className="table table-striped" style={{ marginTop: 20 }}>
-       <thead>
+             <li><p>Price: {item.price}</p></li>
+             <li><p>Price: {item.deliveryAmt}</p></li>
+
+             <li><p>Earliest Delivery Date is {item.nextDelivery}</p></li>
+             <li><p>Description: {item.description}</p></li>
+           </div>
+      </>) )}
+ </ul>
+      
+  
+       {/* <thead>
          <tr>
            <th>Name</th>
            <th>Position</th>
@@ -91,8 +108,8 @@ export default function Inventory() {
            <th>Action</th>
          </tr>
        </thead>
-       <tbody>{recordList()}</tbody>
-     </table>
+       <tbody>{recordList()}</tbody> */}
+     
      {records.length === 0 ? <p>There is Nothing Avaliable</p>:<p>There are {records.length} items Avaliable</p>}
    </div>
  );
