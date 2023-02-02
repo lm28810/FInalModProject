@@ -19,6 +19,12 @@ function Dataform() {
         
     })
 
+  // const timeHandleChange = (date) => setDate(date)
+  const today = new Date()
+  // return <DatePicker selected={date} onChange={timeHandleChange} minDate={today} dateFormat="MM, dd, yyyy" />
+          
+    
+
     const navigate = useNavigate()
 
     // This will handle the submission info
@@ -110,7 +116,7 @@ function Dataform() {
               </div>
                  <div className="form-group">
          <label htmlFor="nextDelivery">Delivery Date</label>
-         <DatePicker selected={date} onChange={date => setDate(date)} />
+         <DatePicker selected={date} onChange={date => setDate(date)} minDate={today} dateFormat="MM-dd-yyyy" autoComplete='off' />
               </div>
                 <div className="form-group">
          <label htmlFor=" deliveryAmt">Delivery Amount</label>

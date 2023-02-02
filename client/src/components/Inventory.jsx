@@ -55,7 +55,7 @@ export default function Inventory() {
  
     // This method will delete a record
     async function deleteRecord(id) {
-      await fetch(`http://localhost:5000/${id}`, {
+      await fetch(`http://localhost:4000/${id}`, {
         method: "DELETE"
       });
  
@@ -98,10 +98,11 @@ export default function Inventory() {
 
              <li><p>Earliest Delivery Date is {item.nextDelivery}</p></li>
              <li><p>Description: {item.description}</p></li>
-             <div className="button-holder">
+           </div></Link>
+           <div className="button-holder">
                <button className="photo-button">{ item.inventory <1 ? <p>Out of Stock</p> : <p>Add to Cart</p> }</button>
              </div>
-           </div> </Link>
+          
       </div>) )}
        </ul>
        </div>
