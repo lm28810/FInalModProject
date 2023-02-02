@@ -70,7 +70,7 @@ function Dataform() {
    
   
   return (
-      <div className='form-container'> 
+      <div className='form-container inventory-container'> 
           {/* onchange handler needed */}
           
           <form className='form' onSubmit={onSubmit}>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 
 const Record = (props) => (
@@ -78,12 +78,13 @@ export default function Inventory() {
 
  // This following section will display the table with the records of individuals.
  return (
-   <div>
+   <div className="inventory-container">
      <h2 className="form-header">Check Out Our Inventory</h2>
   
+     <div className="pic-container">
      <ul>
        {records.map(item => (
-         <>
+         <div className="photo">
          
            <li><img src={item.avatar} alt={item.productname} /></li>
            <li><h3>{item.productname}</h3></li>
@@ -95,9 +96,16 @@ export default function Inventory() {
 
              <li><p>Earliest Delivery Date is {item.nextDelivery}</p></li>
              <li><p>Description: {item.description}</p></li>
+             <div>
+               <button>{ item.inventory <1 ? <p>Out of Stock</p> : <p>Add to Cart</p> }</button>
+             </div>
            </div>
-      </>) )}
- </ul>
+      </div>) )}
+       </ul>
+       </div>
+     <div className="single-pic">
+       <Outlet/>
+     </div>
       
   
        {/* <thead>

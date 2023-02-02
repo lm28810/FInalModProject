@@ -189,6 +189,40 @@ padding: .75em;
 .search{
   outline: 2px solid green;
 }
+
+/* //Inventory */
+
+.inventory-container{
+  border: 1rem solid black;
+  
+  
+}
+
+.pic-container{
+  border: 1rem solid black;
+  display: flex;
+  flex-direction: row;
+}
+
+.photo{
+  border: red solid 39px;
+  width: 500px;
+}
+
+li{
+  padding: .5em ;
+}
+
+@media screen and (max-width: 400px) {
+  .photo {
+    padding: 1em;
+    width: 100%;
+  }
+  ul{
+    padding: 0;
+  }
+}
+
 body {
   margin: 0;
   padding: none;
