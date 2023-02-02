@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLoaderData } from "react-router-dom";
 
 
 const Record = (props) => (
@@ -26,7 +26,7 @@ const Record = (props) => (
  
 export default function Inventory() {
  const [records, setRecords] = useState([]);
-  
+ 
    
   
      // This method fetches the records from the database.
@@ -84,11 +84,13 @@ export default function Inventory() {
      <div className="pic-container">
      <ul>
        {records.map(item => (
-         <div className="photo">
+         <div className="photo" key={item.id}>
          
+           <Link to="/items/:{item.id}">
+           
            <li><img src={item.avatar} alt={item.productname} /></li>
-           <li><h3>{item.productname}</h3></li>
-           <div>
+           <li><h3 className="photo-title">{item.productname}</h3></li>
+           <div className="photo-info">
              <li><p>Product Info</p></li>
 
              <li><p>Price: {item.price}</p></li>
@@ -96,10 +98,10 @@ export default function Inventory() {
 
              <li><p>Earliest Delivery Date is {item.nextDelivery}</p></li>
              <li><p>Description: {item.description}</p></li>
-             <div>
-               <button>{ item.inventory <1 ? <p>Out of Stock</p> : <p>Add to Cart</p> }</button>
+             <div className="button-holder">
+               <button className="photo-button">{ item.inventory <1 ? <p>Out of Stock</p> : <p>Add to Cart</p> }</button>
              </div>
-           </div>
+           </div> </Link>
       </div>) )}
        </ul>
        </div>

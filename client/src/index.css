@@ -201,16 +201,49 @@ padding: .75em;
 .pic-container{
   border: 1rem solid black;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-bottom: 0;
+  
 }
 
 .photo{
-  border: red solid 39px;
-  width: 500px;
+  border: blueviolet 4px solid;
+  margin: 1em 1.5em;
+  width: 400px;
+  
 }
-
+ul{
+  display: flex;
+  flex-wrap: wrap;
+ 
+}
 li{
   padding: .5em ;
+  
+}
+.button-holder{
+  display: flex;
+  
+  justify-content: flex-end;
+  position: relative;
+}
+
+.photo-title{
+  font-size: 2rem;
+}
+
+.photo-button{
+background-color: orangered;
+color: white;
+margin: 1em;
+padding: .5em;
+/* position: absolute;
+bottom: 0;
+right: 0;
+left: 0%; */
+width: 90%;
+
 }
 
 @media screen and (max-width: 400px) {

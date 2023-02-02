@@ -7,7 +7,8 @@ import ErrorPage from './components/ErrorPage';
 import Home from './components/Home';
 import Dataform from './components/Dataform';
 import Searchbar from './components/Searchbar';
-import Inventory,  {loader as rootLoader} from './components/Inventory';
+import Inventory,  {getRecords as rootLoader} from './components/Inventory';
+import SingleItem from './components/SingleItem';
 
 
 const router = createBrowserRouter([
@@ -27,7 +28,11 @@ const router = createBrowserRouter([
       {
         path: "/items",
         element: <Inventory />,
-        // loader: rootLoader,
+         //getRecords: rootLoader,
+      },{
+        path: "items/:id",
+        element: <SingleItem />,
+        //loader: contactLoader,
       },
       
     ],
