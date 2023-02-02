@@ -121,7 +121,7 @@ export default function Inventory() {
        </thead>
        <tbody>{recordList()}</tbody> */}
      
-     {records.length === 0 ? <p>There is Nothing Avaliable</p>:<p>There are {records.length} items Avaliable</p>}
+     {records.length === 0 ? <p className="count">There is Nothing Avaliable</p>:<p>There are {records.length} items Avaliable</p>}
    </div>
  );
 }
