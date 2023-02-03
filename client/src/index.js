@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, RouterProvider, params  as useParams} from "react-router-dom";
 import ErrorPage from './components/ErrorPage';
 import Home from './components/Home';
 import Dataform from './components/Dataform';
@@ -10,7 +10,11 @@ import Searchbar from './components/Searchbar';
 import Inventory,  {getRecords as rootLoader} from './components/Inventory';
 import SingleItem from './components/SingleItem';
 
-
+// const itemId = () => {
+//   const params = useParams()
+//   console.log(params.id)
+//   return {params.id}
+//}
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,7 +36,7 @@ const router = createBrowserRouter([
       },{
         path: "items/:id",
         element: <SingleItem />,
-        //loader: contactLoader,
+        
       },
       
     ],

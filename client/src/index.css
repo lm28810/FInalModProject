@@ -8,6 +8,12 @@ margin-block-start: 0em;
   margin-block-end: 0em;
 }
 
+.none{
+  text-decoration: none;
+  
+  
+}
+
 .App{
   display: flex;
   flex-direction: column;
