@@ -5,79 +5,81 @@ import DatePicker from "react-datepicker";
 import  "react-datepicker/dist/react-datepicker.css";
 
 
+
+
 function Edit() {
-    const {id} = useParams();
-     const [date, setDate]= useState( new Date())
-    const [form, setForm] = useState({
-        avatar: "https://placekitten.com/g/200/200",
-        productname: "Your Product Name",
-        inventory: 0,
-        nextDelivery: date,
-        deliveryAmt: 0,
-        price: 0,
-        description: "Some notes",
-        
-    })
+  const params = useParams();
+  const [date, setDate] = useState(new Date());
+  const navigate = useNavigate();
+  const today = new Date();
 
-  // const timeHandleChange = (date) => setDate(date)
-  const today = new Date()
-  // return <DatePicker selected={date} onChange={timeHandleChange} minDate={today} dateFormat="MM, dd, yyyy" />
-          
-    
+  const [form, setForm] = useState({
+    avatar: "",
+    productName: "",
+    inventory: 0,
+    nextDelivery: date,
+    deliveryAmount: 0,
+    price: 0,
+    description: "",
+  });
 
-    const navigate = useNavigate()
+  useEffect(() => {
+    const fetchData = async () => {
+      const id = params.id.toString();
+      try {
+        const response = await axios.get(
+          `http://localhost:4000/items/update/${params.id.toString()}`
+        );
+        const record = response.data;
+        if (!record) {
+          window.alert(`Record with id ${id} not found`);
+          navigate("/");
+          return;
+        }
+        setForm(record);
+      } catch (error) {
+        const message = `An error has occurred: ${error}`;
+        window.alert(message);
+        return;
+      }
+    };
+    fetchData();
+  }, [params.id, navigate]);
 
-    // This will handle the submission info
-    function updateForm(value) {
-        return setForm((prev) => {
-     return { ...prev, ...value };
-   });
-    }
-
-    // submission
-
-    async function onSubmit(e) {
-        e.preventDefault();
-
-    
-        const newPerson = { ...form };
-
-
-        axios.post(`http://localhost:4000/items/update/${id}`, newPerson)
-      .then(res => console.log(res.body));
- 
-//    await fetch("http://localhost:4000/items/add",  {
-//      method: "POST",
-//      headers: {
-//        "Content-Type": "application/json",
-//      },
-//      body: JSON.stringify(newPerson),
-//    })
-//    .catch(error => {
-//      window.alert(error);
-//      return;
-//   });
- 
-   setForm({ 
-        avatar: "https://placekitten.com/g/200/200",
-        productname: "Your Product Name",
-        inventory: 0,
-        nextDelivery: new Date(),
-        deliveryAmt: 0,
-        price: 0,
-        description: "Some notes",
-        
+  const updateForm = (value) => {
+    setForm((prev) => {
+      return { ...prev, ...value };
     });
-   navigate("/");
- }
+  };
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const editedProduct = {
+      avatar: form.avatar,
+      productName: form.productName,
+      inventory: form.inventory,
+      nextDelivery: form.nextDelivery,
+      deliveryAmount: form.deliveryAmount,
+      price: form.price,
+      description: form.description,
+    };
 
-
-   
+    try {
+      await axios.post(`http://localhost:4000/update/${params.id}`, {
+        editedProduct,
+      });
+      navigate("/");
+    } catch (error) {
+      const message = `An error has occurred: ${error}`;
+      window.alert(message);
+      return;
+    }
+  };
   
   return (
       <div className='form-container inventory-container'> 
-          {/* onchange handler needed */}
+       
+      
           
           <form className='form' onSubmit={onSubmit}>
               <h2 className='form-header'>Edit Your Products Here!</h2>

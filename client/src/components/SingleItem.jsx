@@ -1,14 +1,17 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
-import { Link, useLoaderData } from "react-router-dom";
-import { useParams, redirect } from 'react-router-dom';
+import { Link,useParams } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 function SingleItem() {
       const {id} = useParams();
-  const [record, setRecord] = useState({});
+  const [record, setRecord] = useState([]);
       let itemsUrl3 = "/items/update/" + record._id
-
+  const navigate = useNavigate()
+ 
+  
   const fetchData = () => {
      return axios.get(`http://localhost:4000/items/${id}`)
         .then((response) => setRecord(response.data));
@@ -18,22 +21,21 @@ function SingleItem() {
      fetchData();
   }, [id])
 
-  //Edit
+  
 
-  function editRedirect(id) {
-    return redirect(`/items//update/'${record.id}`)
-  }
   
+
   
-  // This method will delete a record
-    async function deleteRecord(id) {
-      await fetch(`http://localhost:4000/${id}`, {
-        method: "DELETE"
-      });
- 
-      const newRecord = record.filter((el) => el.id !== id);
-      setRecord(newRecord);
-    }
+    // This method will delete a record
+    const deleteRecord = async (id) => {
+    await axios.delete(`http://localhost:4000/items/${id}`);
+    const newRecords = record.filter((el) => el._id !== id);
+    setRecord(newRecords);
+
+    // Redirect to the home page
+    navigate('/');
+};
+  
  
   return (
     <div className='inventory-container container'>
@@ -63,7 +65,7 @@ function SingleItem() {
        </Link>  
        </div>
         <div>
-       <button className="delete sbtn photo-button" onClick={()=>deleteRecord()} >Delete</button> 
+          <button className="delete sbtn photo-button" onClick={()=>deleteRecord(record._id)} >Delete</button> 
         </div>
         <div>
         <button className="photo-button sbtn">Add To Cart</button>

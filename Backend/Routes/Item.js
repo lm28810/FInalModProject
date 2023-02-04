@@ -45,6 +45,8 @@ router.route('/:id').delete((req, res) => {
 
 router.route('/update/:id').post((req, res) => {
   Product.findByIdAndUpdate(req.params.id, req.body)
+    console.log("update line is being hit")
+
     
 })
     
