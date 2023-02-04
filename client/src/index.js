@@ -9,6 +9,8 @@ import Dataform from './components/Dataform';
 import Searchbar from './components/Searchbar';
 import Inventory,  {getRecords as rootLoader} from './components/Inventory';
 import SingleItem from './components/SingleItem';
+import Edit from './components/Edit'
+
 
 // const itemId = () => {
 //   const params = useParams()
@@ -36,6 +38,10 @@ const router = createBrowserRouter([
       },{
         path: "items/:id",
         element: <SingleItem />,
+        
+      },{
+        path: "items/update/:id",
+        element: <Edit />,
         
       },
       

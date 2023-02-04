@@ -292,11 +292,12 @@ width: 90%;
 
 .single-btn{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .sbtn{
   max-width: 80%;
+  padding: 1em;
 }
 
 ul, li{
@@ -304,7 +305,7 @@ ul, li{
 }
 
 .Scard {
-  border: 1rem solid black;
+  /* border: 1rem solid black; */
   width: 80%;
 }
 .single-title{
@@ -319,7 +320,7 @@ ul, li{
 
 .current-image{
   background-color: red;
-  border: 1rem solid black;
+  border: .2rem solid yellow;
   display: flex;
     justify-content: center;
     justify-items: center;
@@ -334,7 +335,7 @@ ul, li{
 }
 
 .Single-info-container{
-  display: fles;
+  display: flex;
   margin: auto;
   width: 60%;
 }
@@ -394,7 +395,7 @@ code {
       left: 0;
       bottom: 0;
       width: 100%;
-    margin-top: 2em;  
+     
   text-align: center;
 
 }
