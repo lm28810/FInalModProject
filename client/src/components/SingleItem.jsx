@@ -24,13 +24,11 @@ function SingleItem() {
   
 
   
-
-  
     // This method will delete a record
     const deleteRecord = async (id) => {
     await axios.delete(`http://localhost:4000/items/${id}`);
-    const newRecords = record.filter((el) => el._id !== id);
-    setRecord(newRecords);
+    // const newRecords = record.filter((el) => el._id !== id);
+    // setRecord(newRecords);
 
     // Redirect to the home page
     navigate('/');

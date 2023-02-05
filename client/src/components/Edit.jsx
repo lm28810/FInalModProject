@@ -8,80 +8,93 @@ import  "react-datepicker/dist/react-datepicker.css";
 
 
 function Edit() {
-  const params = useParams();
-  const [date, setDate] = useState(new Date());
-  const navigate = useNavigate();
-  const today = new Date();
-
-  const [form, setForm] = useState({
-    avatar: "",
-    productName: "",
-    inventory: 0,
-    nextDelivery: date,
-    deliveryAmount: 0,
-    price: 0,
-    description: "",
-  });
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const id = params.id.toString();
-      try {
-        const response = await axios.get(
-          `http://localhost:4000/items/update/${params.id.toString()}`
-        );
-        const record = response.data;
-        if (!record) {
-          window.alert(`Record with id ${id} not found`);
-          navigate("/");
-          return;
-        }
-        setForm(record);
-      } catch (error) {
-        const message = `An error has occurred: ${error}`;
-        window.alert(message);
-        return;
-      }
-    };
-    fetchData();
-  }, [params.id, navigate]);
-
-  const updateForm = (value) => {
-    setForm((prev) => {
-      return { ...prev, ...value };
-    });
-  };
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const editedProduct = {
-      avatar: form.avatar,
-      productName: form.productName,
-      inventory: form.inventory,
-      nextDelivery: form.nextDelivery,
-      deliveryAmount: form.deliveryAmount,
-      price: form.price,
-      description: form.description,
-    };
-
-    try {
-      await axios.post(`http://localhost:4000/update/${params.id}`, {
-        editedProduct,
+    const [date, setDate] = useState(new Date) 
+    let today = new Date ()
+ const [form, setForm] = useState({
+   avatar: "",
+   productname: "",
+  inventory: 0,
+  nextDelivery: 0,
+  deliveryAmt: 0,
+ price: 0,
+description: "",
+ });
+ const params = useParams();
+ const navigate = useNavigate();
+ 
+ useEffect(() => {
+   async function fetchData() {
+     const id = params.id.toString();
+     const response = await fetch(`http://localhost:4000/items/${params.id.toString()}`);
+ 
+     if (!response.ok) {
+       const message = `An error has occurred: ${response.statusText}`;
+       window.alert(message);
+       return;
+     }
+ 
+     const record = await response.json();
+     if (!record) {
+       window.alert(`Record with id ${id} not found`);
+       navigate("/");
+       return;
+     }
+ 
+     setForm(record);
+   }
+ 
+   fetchData();
+ 
+   return;
+ }, [params.id, navigate]);
+ 
+ // These methods will update the state properties.
+ function updateForm(value) {
+   return setForm((prev) => {
+     return { ...prev, ...value };
+   });
+ }
+ 
+ async function onSubmit(e) {
+   e.preventDefault();
+     const editedPerson = {
+        avatar: form.avatar,
+   productname: form.productname,
+  inventory: form.inventory,
+  nextDelivery: form.nextDelivery,
+  deliveryAmt: form.deliveryAmt,
+ price: form.price,
+description: form.description
+    
+   };
+ 
+   // This will send a post request to update the data in the database.
+    //   axios.post(`http://localhost:4000/items/update/${params.id.toString()}`, editedPerson)
+    //   .then(res => console.log(res.body));
+ axios
+      .post(`http://localhost:4000/items/update/${params.id.toString()}`, editedPerson)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+        window.alert("An error occurred while updating the product");
       });
-      navigate("/");
-    } catch (error) {
-      const message = `An error has occurred: ${error}`;
-      window.alert(message);
-      return;
-    }
-  };
+  
+
+  
+ 
+ 
+   navigate("/");
+ }
+console.log(form)
   
   return (
       <div className='form-container inventory-container'> 
        
       
           
-          <form className='form' onSubmit={onSubmit}>
+           <form className='form' onSubmit={onSubmit}>
               <h2 className='form-header'>Edit Your Products Here!</h2>
               <p>Pleade fill out all fields for edit to be valid</p>
        <div className="form-group">
@@ -167,7 +180,7 @@ function Edit() {
            className="btn"
          />
        </div>
-     </form>
+     </form> 
     </div>
   )
 }

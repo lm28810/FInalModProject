@@ -38,13 +38,11 @@ function Dataform() {
 
     async function onSubmit(e) {
         e.preventDefault();
-
-    
         const newPerson = { ...form };
 
 
         axios.post('http://localhost:4000/items/add', newPerson)
-      .then(res => console.log(res.body));
+      .then(res => console.log(res.detail));
  
 //    await fetch("http://localhost:4000/items/add",  {
 //      method: "POST",
