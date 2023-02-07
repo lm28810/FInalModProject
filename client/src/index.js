@@ -43,6 +43,10 @@ const router = createBrowserRouter([
         path: "items/update/:id",
         element: <Edit />,
         
+      },{
+        path: "/items/find/:title",
+        element: <Searchbar />,
+        
       },
       
     ],

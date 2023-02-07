@@ -11,7 +11,7 @@ function Navbar() {
       <nav className="navbar">
        
   <  Link to="/"className="active"><i className="fa fa-fw fa-home"></i> Home</Link> 
-  <Link to="#"><i className="fa fa-fw fa-search"></i> Search</Link> 
+  <Link to="/items/find/:item"><i className="fa fa-fw fa-search"></i> Search</Link> 
   <Link to="/items/add"><i className="fa fa-fw fa-envelope"></i> Sell Product</Link> 
   <Link to="/items"><i className="fa fa-fw fa-user"></i> Explore Inventory</Link>
           </nav>

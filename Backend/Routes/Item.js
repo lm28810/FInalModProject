@@ -10,6 +10,21 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+// router.route('/find/:title').get((req, res) => {
+//   const { title } = req.params;
+
+//   Product.findOne({ title })
+//     .then((product) => {
+//       if (!product) {
+//         return res.status(400).json({ message: 'Product not found' });
+//       }
+
+//       return res.json({ product });
+//     }     
+
+// })
+
+  
 router.route('/add').post((req, res) => {
   console.log("line is being hit")
   console.log(req.body)

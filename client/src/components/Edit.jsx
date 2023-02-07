@@ -70,24 +70,33 @@ description: form.description
  
    // This will send a post request to update the data in the database.
     //   axios.post(`http://localhost:4000/items/update/${params.id.toString()}`, editedPerson)
-    //   .then(res => console.log(res.body));
+//     //   .then(res => console.log(res.body));
  axios
       .post(`http://localhost:4000/items/update/${params.id.toString()}`, editedPerson)
-      .then(() => {
-        navigate("/");
+     .then((res) => { 
+          console.log(res.body)
+        navigate("/items");
       })
       .catch((error) => {
         console.log(error);
         window.alert("An error occurred while updating the product");
       });
+    
   
-
-  
+// await fetch(`http://localhost:4000/items/update/${params.id}`, {
+//      method: "POST",
+//      body: JSON.stringify(editedPerson),
+//      headers: {
+//        'Content-Type': 'application/json'
+//      },
+//    });
  
  
-   navigate("/");
+   navigate("/items");
  }
-console.log(form)
+    
+    
+console.log(params.id.toString())
   
   return (
       <div className='form-container inventory-container'> 
@@ -96,7 +105,7 @@ console.log(form)
           
            <form className='form' onSubmit={onSubmit}>
               <h2 className='form-header'>Edit Your Products Here!</h2>
-              <p>Pleade fill out all fields for edit to be valid</p>
+              <p>Please fill out all fields for edit to be valid</p>
        <div className="form-group">
          <label htmlFor="avatar">Image Url</label>
                   <input
