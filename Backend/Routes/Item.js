@@ -51,6 +51,13 @@ router.route('/:id').get((req, res) => {
     .then(item => res.json(item))
     .catch(err => res.status(400).json('Error: ' + err));
 });
+router.route('/find/:title').get((req, res) => {
+  console.log("single iten line is being hit")
+ 
+  Product.findOne({ title: req.params.title })
+    .then(item => res.json(item))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 
 router.route('/:id').delete((req, res) => {
   Product.findByIdAndDelete(req.params.id)

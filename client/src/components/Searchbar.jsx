@@ -9,7 +9,7 @@ function Searchbar() {
 
   const handleSearch = async () => {
   try {
-    const response = await axios.get(`http://localhost:4000/items/find/${searchTerm}`);
+    const response = await axios.get(`/items/find/${searchTerm}`);
     console.log(response.data);
   } catch (error) {
     console.error(error);

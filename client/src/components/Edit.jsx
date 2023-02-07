@@ -25,7 +25,7 @@ description: "",
  useEffect(() => {
    async function fetchData() {
      const id = params.id.toString();
-     const response = await fetch(`http://localhost:4000/items/${params.id.toString()}`);
+     const response = await fetch(`/items/${params.id.toString()}`);
  
      if (!response.ok) {
        const message = `An error has occurred: ${response.statusText}`;

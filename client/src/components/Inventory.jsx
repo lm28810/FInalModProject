@@ -13,7 +13,7 @@ export default function Inventory() {
      // This method fetches the records from the database.
       useEffect(() => {
         async function getRecords() {
-          const response = await fetch(`http://localhost:4000/items/`);
+          const response = await fetch(`/items/`);
  
           if (!response.ok) {
             const message = `An error occurred: ${response.statusText}`;
