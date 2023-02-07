@@ -10,7 +10,7 @@ function SingleItem() {
   const [record, setRecord] = useState([]);
       let itemsUrl3 = "/items/update/" + record._id
   const navigate = useNavigate()
-  SXza  XSZZ
+  
   
   const fetchData = () => {
      return axios.get(`/items/${id}`)

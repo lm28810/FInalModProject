@@ -6,6 +6,7 @@ const Items = require('./models/Items.model')
 const productRouter = require('./Routes/Item')
 // const ObjectId = require("mongodb").ObjectId
 //const dbo = require("../db/conn");
+const path = require('path')
 
 
 const app = express()
@@ -25,6 +26,10 @@ mongoose.connect( uri,
         useUnifiedTopology: true
     }
 );
+
+
+app.use(express.static(path.join(__dirname, 'build')));
+
 
 mongoose.connection.once('open', ()=> {
     console.log('connected to mongo');
