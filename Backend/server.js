@@ -17,7 +17,7 @@ app.use(cors())
 
 app.use(express.json())
 
-app.use(express.static('public'))
+//app.use(express.static('public'))
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect( uri, 
@@ -28,7 +28,7 @@ mongoose.connect( uri,
 );
 
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 
 mongoose.connection.once('open', ()=> {
