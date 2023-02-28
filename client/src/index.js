@@ -27,14 +27,14 @@ const router = createBrowserRouter([
     // action: rootAction,
     
     children: [
-      { index: true, element: <Advice /> },
+      { index: true, element: <Home /> },
       {
         path: "/items/add",
         element: <Dataform/>,
       },
       {
-        path: "/items",
-        element: <Inventory />,
+        path: "/advice",
+        element: <Advice />,
          //getRecords: rootLoader,
       },{
         path: "items/:id",

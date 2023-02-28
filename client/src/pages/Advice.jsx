@@ -2,6 +2,7 @@ import './Advice.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import React from 'react'
+import { Typography } from '@mui/material'
 
 const Advice = () => {
     const [advice, setAdvice] = useState('')
@@ -35,6 +36,10 @@ const Advice = () => {
 
   return (
       <div className='Advice' >
+          <div>
+              <Typography variant='h5' paragraph>This portion of the website draws comments from an external API</Typography>
+          
+          </div>
           
           <div className='Advice-Card' >
               <h1>{advice} </h1>
