@@ -10,6 +10,7 @@ import Searchbar from './components/Searchbar';
 import Inventory,  {getRecords as rootLoader} from './components/Inventory';
 import SingleItem from './components/SingleItem';
 import Edit from './components/Edit'
+import Advice from './pages/Advice';
 
 
 // const itemId = () => {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
     // action: rootAction,
     
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <Advice /> },
       {
         path: "/items/add",
         element: <Dataform/>,
