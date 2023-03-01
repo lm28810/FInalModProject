@@ -1,21 +1,23 @@
 import React from 'react'
-import { CssBaseline,Typography, Container,Grid, Card } from '@mui/material'
-import { grey } from '@mui/material/colors'
+import { CssBaseline, Button, Box, ButtonGroup } from '@mui/material'
 
 function Home() {
+    const Buttons =[
+        <Button key='one'>Todo List</Button>,
+        <Button key='Two'>Advice App</Button>
+    ]
   return (
-      <div >
-          <CssBaseline />
-         
-          <Typography variant='h2' mt={2}>What Do You Need Today?</Typography>
-          <Container maxWidth='sm'>
-              <Typography variant='h6' paragraph color='red'>Click on one of the boxes below to get your day off to a good start!</Typography>
-          </Container>
-          <div>
+      <div className='home-container'>
+          <div className='container-data'>
+              <h1 className='home-title'>Change Your Life With A Click!</h1>
+              <ButtonGroup color="secondary" aria-label="medium secondary button group">
+        {Buttons}
+      </ButtonGroup>
               
-          
           </div>
-              
+          <div className='container-data'>
+              <img className='image1' src="https://media.istockphoto.com/id/1210524240/photo/i-can-be-who-i-truly-am-through-art.jpg?s=2048x2048&w=is&k=20&c=i420VPuRJZnnolkizYyo5r9hPWLy0WBtLRcKrl-YcV4=" alt="picture" />
+          </div>
       </div>
   )
 }

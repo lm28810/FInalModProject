@@ -11,6 +11,7 @@ import Inventory,  {getRecords as rootLoader} from './components/Inventory';
 import SingleItem from './components/SingleItem';
 import Edit from './components/Edit'
 import Advice from './pages/Advice';
+import ToDoList from './pages/ToDoList';
 
 
 // const itemId = () => {
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
         
       },{
         path: "/items/find/:title",
-        element: <Searchbar />,
+        element: <ToDoList />,
         
       },
       

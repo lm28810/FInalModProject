@@ -1,34 +1,34 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import axios from 'axios';
-import { Outlet } from 'react-router-dom'
 
-function Searchbar() {
+function Searchbar(props) {
 
-  const [searchTerm, setSearchTerm] = useState('')
+  const [input, setInput] = useState('')
 
-  const handleSearch = async () => {
-  try {
-    const response = await axios.get(`/items/find/${searchTerm}`);
-    console.log(response.data);
-  } catch (error) {
-    console.error(error);
+  const handleSubmit = e => { 
+    e.preventDefault();
+    props.onSubmit({
+      id: Math.floor(Math.random() * 10000),
+      text: input,
+    });
+    setInput("")
   }
-};
   
   return (
     <div className='inventory-container'>
-      <h2 className='search-title'>Search Products</h2>
-      <form onSubmit={handleSearch}>
+      <h2 className='search-title'>Create  A Todo</h2>
+      <form onSubmit={handleSubmit}>
 <div>
         <input className='search'
-          placeholder="Enter Post Title"
-          value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)} />
+          placeholder="Enter a Task"
+          value={input}
+            onChange={e => setInput(e.target.value)} />
+          <button>Add To List</button>
         </div>
       </form>
       <div>
-        <Outlet />
+        
       </div>
     </div>
   )
