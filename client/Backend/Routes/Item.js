@@ -28,13 +28,9 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
   console.log("line is being hit")
   console.log(req.body)
-    const avatar = req.body.avatar;
+   
     const productname = req.body.name;
-    const inventory = req.body.inventory;
-    const deliveryDate = Date.parse(req.body.deliveryDate);
-    const deliveryPrice = req.body.deliveryPrice;
-    const salesPrice = req.body.salesPrice;
-    const description = req.body.description;
+    
 const ObjectId = require("mongodb").ObjectId
 
   const newProduct = new Product(req.body);
@@ -54,10 +50,10 @@ router.route('/:id').get((req, res) => {
 router.route('/find/:title').get((req, res) => {
   console.log("single iten line is being hit")
  
-  Product.findOne({ title: req.params.title })
-    .then(item => res.json(item))
-    .catch(err => res.status(400).json('Error: ' + err));
-});
+//   Product.findOne({ title: req.params.title })
+//     .then(item => res.json(item))
+//     .catch(err => res.status(400).json('Error: ' + err));
+// });
 
 router.route('/:id').delete((req, res) => {
   Product.findByIdAndDelete(req.params.id)
